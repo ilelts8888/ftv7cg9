@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Kiểm Tra Tiếng Anh - Ms Lê Hằng English</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #8854C0, #FDCB6E, #00C9A7, #FF7675, #6C5CE7);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            padding: 20px 10px 60px 10px;
+            color: #2d3436;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* SVG Background Patterns Overlay */
+        .bg-patterns {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.25;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%23FFFFFF"><path d="M20 10l3 6 6 3-6 3-3 6-3-6-6-3 6-3z"/><circle cx="80" cy="30" r="8"/><path d="M100 80c0 5-5 10-10 10s-10-5-10-10 5-10 10-10 10 5 10 10z"/><path d="M30 90l5-10 10 5-5 10z"/><path d="M70 100l2 4 4 2-4 2-2 4-2-4-4-2 4-2z"/></g></svg>');
+            animation: floatPatterns 20s linear infinite;
+        }
+
+        @keyframes floatPatterns {
+            from { background-position: 0 0; }
+            to { background-position: 120px 240px; }
+        }
+
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Style */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .teacher-badge {
+            display: inline-block;
+            background: #ffffff;
+            color: #6C5CE7;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            margin-bottom: 10px;
+            border: 2px solid #6C5CE7;
+            transform: rotate(-1deg);
+        }
+
+        .main-title {
+            font-size: 26px;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 2px 3px 0px rgba(0,0,0,0.2);
+            margin-bottom: 12px;
+        }
+
+        /* Important Reminder Box */
+        .reminder-card {
+            background: #FFF9E6;
+            border: 3px solid #FFEAA7;
+            border-left: 8px solid #FDCB6E;
+            border-radius: 18px;
+            padding: 16px 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .reminder-title {
+            color: #D63031;
+            font-weight: 900;
+            font-size: 17px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .reminder-text {
+            color: #2d3436;
+            font-size: 14.5px;
+            line-height: 1.5;
+            font-weight: 700;
+        }
+
+        .reminder-highlight {
+            display: block;
+            margin-top: 8px;
+            color: #6C5CE7;
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        /* Question Cards */
+        .question-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 22px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            border: 3px solid #F0F0F0;
+            transition: transform 0.2s ease;
+            position: relative;
+        }
+
+        .q-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            border-bottom: 2px dashed #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .q-number {
+            background: #6C5CE7;
+            color: white;
+            font-weight: 800;
+            font-size: 14px;
+            padding: 4px 14px;
+            border-radius: 12px;
+            box-shadow: 0 3px 0 #4b38b3;
+        }
+
+        .q-type {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #b2bec3;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .q-text {
+            font-size: 17px;
+            font-weight: 700;
+            color: #2d3436;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .q-text u {
+            color: #e84393;
+            font-weight: 900;
+            text-decoration-color: #e84393;
+            text-decoration-thickness: 3px;
+            padding: 0 2px;
+        }
+
+        /* Option Grid / Buttons */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .opt-btn {
+            background: #F8F9FA;
+            border: 2px solid #E9ECEF;
+            border-bottom: 5px solid #DEE2E6;
+            border-radius: 18px;
+            padding: 13px 16px;
+            font-size: 15.5px;
+            font-weight: 700;
+            color: #495057;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            outline: none;
+            user-select: none;
+        }
+
+        .opt-btn:hover:not([disabled]) {
+            transform: translateY(-2px) scale(1.01);
+            background: #EDF2F7;
+            border-color: #CBD5E0;
+        }
+
+        .opt-btn:active:not([disabled]) {
+            transform: translateY(2px);
+            border-bottom-width: 2px;
+        }
+
+        .opt-prefix {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #E2E8F0;
+            color: #4A5568;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        /* Correct & Wrong States */
+        .opt-btn.correct {
+            background: #E6F9F0 !important;
+            border-color: #00D26A !important;
+            border-bottom: 5px solid #00A852 !important;
+            color: #007A3D !important;
+        }
+        .opt-btn.correct .opt-prefix {
+            background: #00D26A !important;
+            color: white !important;
+        }
+
+        .opt-btn.wrong {
+            background: #FFEAEA !important;
+            border-color: #FF4757 !important;
+            border-bottom: 5px solid #D63031 !important;
+            color: #C0392B !important;
+            animation: shake 0.4s ease;
+        }
+        .opt-btn.wrong .opt-prefix {
+            background: #FF4757 !important;
+            color: white !important;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        /* Explanation Box */
+        .explanation-box {
+            display: none;
+            margin-top: 18px;
+            background: #F3F0FF;
+            border: 2px dashed #9B51E0;
+            border-radius: 18px;
+            padding: 16px 18px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .explanation-box.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .exp-head {
+            font-weight: 900;
+            color: #6C5CE7;
+            font-size: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .exp-section {
+            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.55;
+            color: #2d3436;
+        }
+
+        .exp-section strong {
+            color: #6C5CE7;
+        }
+
+        .exp-list {
+            margin-left: 12px;
+            list-style: none;
+        }
+
+        .exp-list li {
+            margin-bottom: 3px;
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .exp-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #8854C0;
+            font-weight: bold;
+        }
+
+        /* Submit Bar & Modal */
+        .submit-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .submit-btn {
+            background: #00D26A;
+            color: white;
+            font-size: 20px;
+            font-weight: 900;
+            padding: 16px 45px;
+            border: none;
+            border-bottom: 6px solid #00A852;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 210, 106, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            background: #00E676;
+        }
+
+        .submit-btn:active {
+            transform: translateY(3px);
+            border-bottom-width: 2px;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: white;
+            border-radius: 28px;
+            max-width: 500px;
+            width: 100%;
+            padding: 30px 24px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border: 4px solid #6C5CE7;
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-score {
+            font-size: 48px;
+            font-weight: 900;
+            color: #6C5CE7;
+            margin: 10px 0;
+        }
+
+        .modal-msg {
+            font-size: 16px;
+            font-weight: 700;
+            color: #2d3436;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            background: #F8F9FA;
+            padding: 16px;
+            border-radius: 16px;
+            border-left: 5px solid #6C5CE7;
+        }
+
+        .close-modal-btn {
+            background: #6C5CE7;
+            color: white;
+            border: none;
+            border-bottom: 4px solid #4b38b3;
+            padding: 12px 30px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-patterns"></div>
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="container">
+        <header>
+            <div class="teacher-badge">👩‍🏫 Giáo viên tạo: Ms Lê Hằng English</div>
+            <h1 class="main-title">🎯 BÀI KIỂM TRA TIẾNG ANH TƯƠNG TÁC</h1>
+        </header>
+
+        <div class="reminder-card">
+            <div class="reminder-title">
+                <span>⚠️ LỜI NHẮC CỰC KỲ QUAN TRỌNG ⚠️</span>
+            </div>
+            <div class="reminder-text">
+                Chỉ có đọc kỹ giải thích ngay sau mỗi câu, sau đó ghi lại từ vựng/cấu trúc mới vào vở để học thì mới thực sự giỏi lên.<br>
+                Làm cho xong mà không đọc giải thích hay đọc qua loa không ghi chép thì chỉ tốn thời gian vô ích!
+                <span class="reminder-highlight">* Kéo tới đâu, làm tới đó! *</span>
+            </div>
+        </div>
+
+        <div id="quiz-container"></div>
+
+        <div class="submit-container">
+            <button class="submit-btn" onclick="submitQuiz()">NỘP BÀI THI 🚀</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="result-modal">
+        <div class="modal-card">
+            <div style="font-size: 50px;">🏆</div>
+            <h2 style="font-weight: 900; color:#2d3436;">KẾT QUẢ BÀI LÀM</h2>
+            <div class="modal-score" id="score-text">0 / 55</div>
+            <div class="modal-msg" id="comment-text">...</div>
+            <button class="close-modal-btn" onclick="closeModal()">ĐÓNG VÀ XEM LẠI BÀI 📝</button>
+        </div>
+    </div>
+
+    <script>
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx) audioCtx = new AudioContext();
+        }
+
+        function playSound(type) {
+            try {
+                initAudio();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                if (type === 'correct') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(659.25, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(1318.51, audioCtx.currentTime + 0.3);
+                    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.4);
+                } else if (type === 'wrong') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+                    osc.frequency.setValueAtTime(160, audioCtx.currentTime + 0.15);
+                    osc.frequency.setValueAtTime(110, audioCtx.currentTime + 0.3);
+                    gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.45);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.45);
+                }
+            } catch (e) {
+                console.log("Audio waiting for user gesture", e);
+            }
+        }
+
+        const rawQuestions = [
+            // III. Choose the correct answer
+            {
+                type: "SECTION III - VERB PATTERNS (FINISH)",
+                question: "1. I finished ________ the book and went to bed.",
+                options: [
+                    { text: "reading", correct: true },
+                    { text: "to read", correct: false },
+                    { text: "read", correct: false },
+                    { text: "to be read", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi đã đọc xong cuốn sách và đi ngủ.",
+                    optionsDict: [
+                        "A. reading (V-ing)",
+                        "B. to read (to-V)",
+                        "C. read (V-bare)",
+                        "D. to be read (Bị động)"
+                    ],
+                    whyCorrect: "Cấu trúc cố định: `finish + V-ing` (hoàn thành / làm xong việc gì). Do đó chọn 'reading'.",
+                    whyIncorrect: "Các đáp án B, C, D sai dạng động từ theo sau 'finish'."
+                }
+            },
+            {
+                type: "SECTION III - VERB PATTERNS (ALLOW)",
+                question: "2. Dad allowed Dora ________ to the party.",
+                options: [
+                    { text: "going", correct: false },
+                    { text: "to go", correct: true },
+                    { text: "go", correct: false },
+                    { text: "gone", correct: false }
+                ],
+                explanation: {
+                    translation: "Bố đã cho phép Dora đi dự tiệc.",
+                    optionsDict: [
+                        "A. going (V-ing)",
+                        "B. to go (to-V)",
+                        "C. go (V-bare)",
+                        "D. gone (V3)"
+                    ],
+                    whyCorrect: "Cấu trúc: `allow sb + to-V` (cho phép ai làm gì). Do đó chọn 'to go'.",
+                    whyIncorrect: "A, C, D sai cấu trúc động từ đi sau 'allow sb'."
+                }
+            },
+            {
+                type: "SECTION III - VERB PATTERNS (EXPECT)",
+                question: "3. My teacher always expected me ________ well in exams.",
+                options: [
+                    { text: "do", correct: false },
+                    { text: "doing", correct: false },
+                    { text: "to do", correct: true },
+                    { text: "to have done", correct: false }
+                ],
+                explanation: {
+                    translation: "Thầy cô luôn kỳ vọng tôi làm bài tốt trong các kỳ thi.",
+                    optionsDict: [
+                        "A. do (V-bare)",
+                        "B. doing (V-ing)",
+                        "C. to do (to-V)",
+                        "D. to have done (Thì hoàn thành)"
+                    ],
+                    whyCorrect: "Cấu trúc: `expect sb + to-V` (kỳ vọng/mong chờ ai làm gì). Do đó chọn 'to do'.",
+                    whyIncorrect: "A, B, D không đúng công thức nguyên mẫu đi sau 'expect sb'."
+                }
+            },
+            {
+                type: "SECTION III - VERB PATTERNS (STOP)",
+                question: "4. Will you please stop ________ TV channels?",
+                options: [
+                    { text: "to change", correct: false },
+                    { text: "change", correct: false },
+                    { text: "be changed", correct: false },
+                    { text: "changing", correct: true }
+                ],
+                explanation: {
+                    translation: "Cậu có thể dừng việc chuyển kênh TV liên tục lại được không?",
+                    optionsDict: [
+                        "A. to change (Dừng lại ĐỂ làm gì)",
+                        "B. change (V-bare)",
+                        "C. be changed (Bị động)",
+                        "D. changing (Dừng HẲN hành động đang làm)"
+                    ],
+                    whyCorrect: "Cấu trúc: `stop + V-ing` (dừng hẳn việc đang làm). Ý nói dừng hành động chuyển kênh TV lại.",
+                    whyIncorrect: "A có nghĩa là 'dừng việc khác để chuyển kênh'; B và C sai công thức ngữ pháp."
+                }
+            },
+            {
+                type: "SECTION III - VERB PATTERNS (REMEMBER)",
+                question: "5. My glasses are in my book bag, but I don’t remember ________ them there.",
+                options: [
+                    { text: "putting", correct: true },
+                    { text: "to put", correct: false },
+                    { text: "putted", correct: false },
+                    { text: "put", correct: false }
+                ],
+                explanation: {
+                    translation: "Kính của tôi ở trong cặp sách, nhưng tôi không nhớ là mình đã để nó ở đó lúc nào.",
+                    optionsDict: [
+                        "A. putting (Nhớ ĐÃ làm gì trong quá khứ)",
+                        "B. to put (Nhớ PHẢI làm gì)",
+                        "C. putted (Sai dạng quá khứ của put)",
+                        "D. put (V-bare)"
+                    ],
+                    whyCorrect: "Cấu trúc: `remember + V-ing` (nhớ một việc ĐÃ xảy ra trong quá khứ). Việc cất kính đã diễn ra rồi.",
+                    whyIncorrect: "B mang nghĩa nhắc nhở 'nhớ phải làm gì trong tương lai'; C sai hình thái động từ (put - put - put)."
+                }
+            },
+            {
+                type: "SECTION III - WOULD LIKE",
+                question: "6. I’d like ________ somewhere different for a change.",
+                options: [
+                    { text: "to go", correct: true },
+                    { text: "going", correct: false },
+                    { text: "go", correct: false },
+                    { text: "to have gone", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi muốn đi đâu đó khác biệt để thay đổi không khí.",
+                    optionsDict: [
+                        "A. to go (to-V)",
+                        "B. going (V-ing)",
+                        "C. go (V-bare)",
+                        "D. to have gone"
+                    ],
+                    whyCorrect: "Cấu trúc: `would like ('d like) + to-V` (muốn làm gì). Do đó chọn 'to go'.",
+                    whyIncorrect: "B, C, D sai công thức đứng sau 'would like'."
+                }
+            },
+            {
+                type: "SECTION III - VERB PATTERNS (AGREE)",
+                question: "7. He agreed ________ the job as soon as possible.",
+                options: [
+                    { text: "start", correct: false },
+                    { text: "starting", correct: false },
+                    { text: "to start", correct: true },
+                    { text: "to be started", correct: false }
+                ],
+                explanation: {
+                    translation: "Anh ấy đã đồng ý bắt đầu công việc càng sớm càng tốt.",
+                    optionsDict: [
+                        "A. start (V-bare)",
+                        "B. starting (V-ing)",
+                        "C. to start (to-V)",
+                        "D. to be started (Bị động)"
+                    ],
+                    whyCorrect: "Cấu trúc: `agree + to-V` (đồng ý làm gì). Do đó chọn 'to start'.",
+                    whyIncorrect: "A, B, D sai dạng ngữ pháp động từ đi sau 'agree'."
+                }
+            },
+            {
+                type: "SECTION III - PREFER V-ING TO V-ING",
+                question: "8. Vietnamese prefer riding motorbikes ________ walking to work.",
+                options: [
+                    { text: "to", correct: true },
+                    { text: "for", correct: false },
+                    { text: "than", correct: false },
+                    { text: "rather than", correct: false }
+                ],
+                explanation: {
+                    translation: "Người Việt Nam thích đi xe máy hơn là đi bộ đi làm.",
+                    optionsDict: [
+                        "A. to (Giới từ chuẩn đi với prefer)",
+                        "B. for",
+                        "C. than",
+                        "D. rather than"
+                    ],
+                    whyCorrect: "Cấu trúc: `prefer V-ing TO V-ing` (thích làm việc A hơn việc B). Do đó chọn giới từ 'to'.",
+                    whyIncorrect: "B, C, D không đi đúng với công thức 'prefer V-ing ... V-ing'."
+                }
+            },
+            {
+                type: "SECTION III - NEED + V-ING / NEED TO BE V3",
+                question: "9. Look at those windows! They really need ________.",
+                options: [
+                    { text: "to clean", correct: false },
+                    { text: "cleaning", correct: false },
+                    { text: "to be cleaned", correct: false },
+                    { text: "B and C are correct", correct: true }
+                ],
+                explanation: {
+                    translation: "Nhìn mấy cái cửa sổ kìa! Chúng thực sự cần được lau chùi.",
+                    optionsDict: [
+                        "A. to clean (Chủ động)",
+                        "B. cleaning (Bị động dạng V-ing)",
+                        "C. to be cleaned (Bị động dạng to-V)",
+                        "D. B and C are correct (Cả B và C đều đúng)"
+                    ],
+                    whyCorrect: "Cấu trúc bị động với Need khi chủ ngữ là vật: `S(vật) + need + V-ing` HOẶC `S(vật) + need to be + V3/V-ed`. Do đó cả B và C đều chính xác.",
+                    whyIncorrect: "A là dạng chủ động không dùng cho cửa sổ."
+                }
+            },
+            {
+                type: "SECTION III - WOULD RATHER",
+                question: "10. I’m tired. I’d rather ________ out this evening, if you don't mind.",
+                options: [
+                    { text: "not going", correct: false },
+                    { text: "not to go", correct: false },
+                    { text: "don’t go", correct: false },
+                    { text: "not go", correct: true }
+                ],
+                explanation: {
+                    translation: "Tôi mệt rồi. Tôi thà không đi ra ngoài tối nay, nếu bạn không phiền.",
+                    optionsDict: [
+                        "A. not going",
+                        "B. not to go",
+                        "C. don't go",
+                        "D. not go (Dạng phủ định chuẩn)"
+                    ],
+                    whyCorrect: "Cấu trúc: `would rather ('d rather) + NOT + V-bare` (thà không làm gì). Do đó chọn 'not go'.",
+                    whyIncorrect: "A, B, C sai công thức phủ định sau 'would rather'."
+                }
+            },
+            {
+                type: "SECTION III - VERB PATTERNS (ADVISE)",
+                question: "11. My bank manager advised ________ a loan.",
+                options: [
+                    { text: "to take me out", correct: false },
+                    { text: "me taking out", correct: false },
+                    { text: "me to take out", correct: true },
+                    { text: "me take out", correct: false }
+                ],
+                explanation: {
+                    translation: "Giám đốc ngân hàng khuyên tôi nên vay một khoản tiền.",
+                    optionsDict: [
+                        "A. to take me out (Sai trật tự)",
+                        "B. me taking out (V-ing)",
+                        "C. me to take out (me + to-V)",
+                        "D. me take out (V-bare)"
+                    ],
+                    whyCorrect: "Cấu trúc: `advise sb + to-V` (khuyên ai làm gì). Cụm 'take out a loan' = vay tiền.",
+                    whyIncorrect: "A sai vị trí tân ngữ 'me'; B và D sai dạng động từ sau advise sb."
+                }
+            },
+            {
+                type: "SECTION III - VERB PATTERNS (PROMISE)",
+                question: "12. I must go now. I promised ________ late.",
+                options: [
+                    { text: "not being", correct: false },
+                    { text: "not to be", correct: true },
+                    { text: "c. to not be", correct: false },
+                    { text: "I wouldn’t be", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi phải đi bây giờ đây. Tôi đã hứa là sẽ không về muộn.",
+                    optionsDict: [
+                        "A. not being (V-ing)",
+                        "B. not to be (Phủ định của to-V)",
+                        "C. to not be (Sai trật tự 'not')",
+                        "D. I wouldn't be"
+                    ],
+                    whyCorrect: "Cấu trúc: `promise + (not) + to-V` (hứa (không) làm gì). Phủ định 'not' đứng ngay trước 'to-V'.",
+                    whyIncorrect: "A, C, D không đúng dạng phủ định chuẩn của to-infinitive."
+                }
+            },
+            {
+                type: "SECTION III - LOOK FORWARD TO",
+                question: "13. The children are looking forward ________ their grandma again.",
+                options: [
+                    { text: "seeing", correct: false },
+                    { text: "to see", correct: false },
+                    { text: "to seeing", correct: true },
+                    { text: "to be seen", correct: false }
+                ],
+                explanation: {
+                    translation: "Bọn trẻ đang rất mong chờ được gặp lại bà của chúng.",
+                    optionsDict: [
+                        "A. seeing (Thiếu to)",
+                        "B. to see (Dùng V-bare)",
+                        "C. to seeing (to + V-ing)",
+                        "D. to be seen (Bị động)"
+                    ],
+                    whyCorrect: "Cấu trúc kinh điển: `look forward to + V-ing` (mong chờ/mong mỏi việc gì).",
+                    whyIncorrect: "A thiếu giới từ 'to'; B nhầm 'to' ở đây là to-infinitive (thực chất 'to' là giới từ)."
+                }
+            },
+            {
+                type: "SECTION III - MIND & WOULD RATHER",
+                question: "14. I don’t mind ________ home but I’d rather ________ a taxi.",
+                options: [
+                    { text: "to walk - to get", correct: false },
+                    { text: "walking - to get", correct: false },
+                    { text: "walking – get", correct: true },
+                    { text: "to walk – getting", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi không phiền đi bộ về nhà đâu nhưng tôi thà bắt xe taxi hơn.",
+                    optionsDict: [
+                        "A. to walk - to get",
+                        "B. walking - to get",
+                        "C. walking – get (don't mind + V-ing / would rather + V-bare)",
+                        "D. to walk – getting"
+                    ],
+                    whyCorrect: "Kết hợp 2 công thức: `don't mind + V-ing` (walking) và `would rather + V-bare` (get).",
+                    whyIncorrect: "A, B, D vi phạm một trong hai công thức trên."
+                }
+            },
+            {
+                type: "SECTION III - COMMUNICATION",
+                question: "15. \"How was your trip to Viet Nam after 10 years?\" – \"________\"",
+                options: [
+                    { text: "Amazing! I couldn’t believe how much it has changed!", correct: true },
+                    { text: "Thank you for asking me.", correct: false },
+                    { text: "10 years? It's 11 years.", correct: false },
+                    { text: "No, I can't tell you.", correct: false }
+                ],
+                explanation: {
+                    translation: "\"Chuyến đi Việt Nam sau 10 năm của bạn thế nào?\" - \"Tuyệt vời! Tớ không thể tin được nó đã thay đổi nhiều đến thế!\"",
+                    optionsDict: [
+                        "A. Tuyệt vời! Tớ không tin nổi nó thay đổi nhiều vậy!",
+                        "B. Cảm ơn vì đã hỏi tớ.",
+                        "C. 10 năm? Phải 11 năm chứ.",
+                        "D. Không, tớ không thể nói cho bạn."
+                    ],
+                    whyCorrect: "Đáp án A bộc lộ cảm xúc thích thú tự nhiên và trả lời đúng trọng tâm câu hỏi về cảm nhận chuyến đi.",
+                    whyIncorrect: "B, C, D không tự nhiên và không phù hợp lịch sự xã giao."
+                }
+            },
+
+            // IV. Write the correct form or tense
+            {
+                type: "SECTION IV - PREFER",
+                question: "16. My father prefers ________ (work) as a farmer rather than a blue-collar worker.",
+                options: [
+                    { text: "working", correct: true },
+                    { text: "to work", correct: false },
+                    { text: "worked", correct: false },
+                    { text: "work", correct: false }
+                ],
+                explanation: {
+                    translation: "Bố tôi thích làm nông dân hơn là làm công nhân chân tay.",
+                    optionsDict: [
+                        "A. working (V-ing)",
+                        "B. to work",
+                        "C. worked",
+                        "D. work"
+                    ],
+                    whyCorrect: "Cấu trúc: `prefer V-ing ... rather than ...` (thích làm gì hơn làm gì). Do đó chia 'working'.",
+                    whyIncorrect: "B, C, D không hợp cấu trúc prefer V-ing."
+                }
+            },
+            {
+                type: "SECTION IV - CAN'T HELP",
+                question: "17. I can’t help ________ (worry) about her traveling abroad on her own.",
+                options: [
+                    { text: "worrying", correct: true },
+                    { text: "to worry", correct: false },
+                    { text: "worry", correct: false },
+                    { text: "worried", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi không thể ngừng lo lắng về việc cô ấy đi du lịch nước ngoài một mình.",
+                    optionsDict: [
+                        "A. worrying (V-ing)",
+                        "B. to worry",
+                        "C. worry",
+                        "D. worried"
+                    ],
+                    whyCorrect: "Cấu trúc cố định: `can't help + V-ing` (không thể cưỡng lại / không thể ngừng làm gì).",
+                    whyIncorrect: "B, C, D sai dạng ngữ pháp đứng sau 'can't help'."
+                }
+            },
+            {
+                type: "SECTION IV - PASSIVE VOICE (PAST SIMPLE)",
+                question: "18. Rubber sandals ________ (wear) by Vietnamese soldiers during the war against the French and the Americans.",
+                options: [
+                    { text: "were worn", correct: true },
+                    { text: "wore", correct: false },
+                    { text: "are worn", correct: false },
+                    { text: "have been worn", correct: false }
+                ],
+                explanation: {
+                    translation: "Dép cao su đã được đeo/đi bởi các chiến sĩ Việt Nam trong thời kỳ kháng chiến chống Pháp và chống Mỹ.",
+                    optionsDict: [
+                        "A. were worn (Bị động Quá khứ đơn số nhiều)",
+                        "B. wore (Chủ động)",
+                        "C. are worn (Hiện tại)",
+                        "D. have been worn"
+                    ],
+                    whyCorrect: "Dép cao su ('Rubber sandals' - số nhiều) chịu tác động và sự việc đã xảy ra trong quá khứ lịch sử -> Thì Bị động quá khứ đơn `were + V3 (worn)`.",
+                    whyIncorrect: "B chủ động; C sai thì hiện tại."
+                }
+            },
+            {
+                type: "SECTION IV - PAST SIMPLE",
+                question: "19. In 1998, I ________ (go) back to Viet Nam after 30 years.",
+                options: [
+                    { text: "went", correct: true },
+                    { text: "have gone", correct: false },
+                    { text: "had gone", correct: false },
+                    { text: "go", correct: false }
+                ],
+                explanation: {
+                    translation: "Vào năm 1998, tôi đã trở về Việt Nam sau 30 năm.",
+                    optionsDict: [
+                        "A. went (Quá khứ đơn)",
+                        "B. have gone (Hiện tại hoàn thành)",
+                        "C. had gone",
+                        "D. go"
+                    ],
+                    whyCorrect: "Có mốc thời gian quá khứ xác định 'In 1998' -> Bắt buộc dùng Thì Quá khứ đơn (`went`).",
+                    whyIncorrect: "B, C, D sai thì khi có mốc năm xác định trong quá khứ."
+                }
+            },
+            {
+                type: "SECTION IV - IT'S KIND OF YOU TO-V",
+                question: "20. It’s kind of you ________ (report) to her what happened to her son last night.",
+                options: [
+                    { text: "to report", correct: true },
+                    { text: "reporting", correct: false },
+                    { text: "report", correct: false },
+                    { text: "reported", correct: false }
+                ],
+                explanation: {
+                    translation: "Bạn thật tốt bụng khi đã báo cho cô ấy biết điều gì đã xảy ra với con trai cô ấy tối qua.",
+                    optionsDict: [
+                        "A. to report (to-V)",
+                        "B. reporting",
+                        "C. report",
+                        "D. reported"
+                    ],
+                    whyCorrect: "Cấu trúc lịch sự khen ngợi: `It's + adj + of sb + to-V` (Ai đó thật làm sao khi làm gì).",
+                    whyIncorrect: "B, C, D sai dạng ngữ pháp đứng sau 'kind of you'."
+                }
+            },
+            {
+                type: "SECTION IV - SUBJECT-VERB AGREEMENT",
+                question: "21. The number of vehicles in Viet Nam ________ (increase) by 10 percent every year.",
+                options: [
+                    { text: "increases", correct: true },
+                    { text: "increase", correct: false },
+                    { text: "are increasing", correct: false },
+                    { text: "have increased", correct: false }
+                ],
+                explanation: {
+                    translation: "Số lượng phương tiện ở Việt Nam tăng 10% mỗi năm.",
+                    optionsDict: [
+                        "A. increases (Động từ chia số ít - Hiện tại đơn)",
+                        "B. increase (Chia số nhiều)",
+                        "C. are increasing",
+                        "D. have increased"
+                    ],
+                    whyCorrect: "Quy tắc hòa hợp chủ vị: `The number of + N(số nhiều) + V(chia số ít)`. Trạng từ 'every year' chỉ sự thật lặp lại -> Dùng Hiện tại đơn số ít `increases`.",
+                    whyIncorrect: "B, C chia số nhiều (nhầm với 'A number of')."
+                }
+            },
+            {
+                type: "SECTION IV - MIND + V-ING",
+                question: "22. Don’t you mind ________ (travel) so far every day?",
+                options: [
+                    { text: "traveling", correct: true },
+                    { text: "to travel", correct: false },
+                    { text: "travel", correct: false },
+                    { text: "traveled", correct: false }
+                ],
+                explanation: {
+                    translation: "Bạn không phiền khi phải đi lại xa như vậy mỗi ngày sao?",
+                    optionsDict: [
+                        "A. traveling / travelling (V-ing)",
+                        "B. to travel",
+                        "C. travel",
+                        "D. traveled"
+                    ],
+                    whyCorrect: "Cấu trúc: `mind + V-ing` (phiền/ngại làm việc gì). Do đó chọn 'traveling'.",
+                    whyIncorrect: "B, C, D sai công thức sau 'mind'."
+                }
+            },
+            {
+                type: "SECTION IV - PAST SIMPLE AFTER AFTER",
+                question: "23. After the war ________ (end), Vietnamese people focused on dealing with domestic matters.",
+                options: [
+                    { text: "ended", correct: true },
+                    { text: "ends", correct: false },
+                    { text: "has ended", correct: false },
+                    { text: "is ending", correct: false }
+                ],
+                explanation: {
+                    translation: "Sau khi chiến tranh kết thúc, người dân Việt Nam tập trung giải quyết các vấn đề trong nước.",
+                    optionsDict: [
+                        "A. ended (Quá khứ đơn)",
+                        "B. ends",
+                        "C. has ended",
+                        "D. is ending"
+                    ],
+                    whyCorrect: "Mệnh đề chính chia quá khứ 'focused', vế thời gian với 'After' chỉ hành động xảy ra trước/trong quá khứ -> Dùng Quá khứ đơn (`ended`) hoặc Quá khứ hoàn thành.",
+                    whyIncorrect: "B, C, D là các thì hiện tại không khớp chuỗi quá khứ."
+                }
+            },
+
+            // V. Error Correction
+            {
+                type: "SECTION V - ERROR CORRECTION",
+                question: "24. Choose the underlined word/phrase that needs correcting:<br>I <u>decided changing</u>(A) jobs because my boss <u>makes</u>(B) me <u>work</u>(C) overtime.(D)",
+                options: [
+                    { text: "decided changing", correct: true },
+                    { text: "makes", correct: false },
+                    { text: "work", correct: false },
+                    { text: "overtime", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi đã quyết định chuyển việc vì sếp của tôi bắt tôi làm thêm giờ.",
+                    optionsDict: [
+                        "A. decided changing -> Sửa thành 'decided to change' (decide + to-V)",
+                        "B. makes (Đúng)",
+                        "C. work (Đúng - make sb V-bare)",
+                        "D. overtime (Đúng)"
+                    ],
+                    whyCorrect: "Động từ 'decide' bắt buộc đi với to-infinitive (`decide + to-V`). Do đó phần A sai, cần sửa `decided changing` -> `decided to change`.",
+                    whyIncorrect: "B, C, D chia đúng cấu trúc ngữ pháp."
+                }
+            },
+            {
+                type: "SECTION V - ERROR CORRECTION",
+                question: "25. Choose the underlined word/phrase that needs correcting:<br>I <u>succeeded in</u>(A) <u>to find</u>(B) a job, so my parents <u>didn't make</u>(C) me <u>go</u>(D) to college.",
+                options: [
+                    { text: "succeeded in", correct: false },
+                    { text: "to find", correct: true },
+                    { text: "didn't make", correct: false },
+                    { text: "go", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi đã thành công trong việc tìm một công việc, vì vậy bố mẹ tôi đã không bắt tôi vào đại học.",
+                    optionsDict: [
+                        "A. succeeded in (Đúng)",
+                        "B. to find -> Sửa thành 'finding' (Sau giới từ in phải là V-ing)",
+                        "C. didn't make (Đúng)",
+                        "D. go (Đúng)"
+                    ],
+                    whyCorrect: "Sau giới từ 'in' động từ phải ở dạng V-ing (`succeed in + V-ing`). Do đó B sai, sửa `to find` -> `finding`.",
+                    whyIncorrect: "A, C, D sử dụng chuẩn xác."
+                }
+            },
+            {
+                type: "SECTION V - ERROR CORRECTION",
+                question: "26. Choose the underlined word/phrase that needs correcting:<br><u>Get</u>(A) more exercise <u>appears to be</u>(B) the best <u>way</u>(C) to lose weight.(D)",
+                options: [
+                    { text: "Get", correct: true },
+                    { text: "appears", correct: false },
+                    { text: "way", correct: false },
+                    { text: "to lose weight", correct: false }
+                ],
+                explanation: {
+                    translation: "Tập thể dục nhiều hơn có vẻ là cách tốt nhất để giảm cân.",
+                    optionsDict: [
+                        "A. Get -> Sửa thành 'Getting' (Danh động từ V-ing làm chủ ngữ)",
+                        "B. appears (Đúng)",
+                        "C. way (Đúng)",
+                        "D. to lose weight (Đúng)"
+                    ],
+                    whyCorrect: "Đứng đầu câu làm Chủ ngữ phải dùng Danh động từ (Gerund) dạng `V-ing`. Sửa `Get` -> `Getting`.",
+                    whyIncorrect: "B, C, D chia đúng ngữ pháp."
+                }
+            },
+            {
+                type: "SECTION V - ERROR CORRECTION",
+                question: "27. Choose the underlined word/phrase that needs correcting:<br><u>Let’s stop</u>(A) <u>to watch</u>(B) so much TV so that we can <u>read</u>(C) <u>or go</u>(D) out instead.",
+                options: [
+                    { text: "Let’s stop", correct: false },
+                    { text: "to watch", correct: true },
+                    { text: "read", correct: false },
+                    { text: "or go", correct: false }
+                ],
+                explanation: {
+                    translation: "Chúng ta hãy ngừng xem TV quá nhiều để có thể đọc sách hoặc đi ra ngoài thay vào đó.",
+                    optionsDict: [
+                        "A. Let's stop (Đúng)",
+                        "B. to watch -> Sửa thành 'watching' (stop + V-ing = dừng hẳn hành động)",
+                        "C. read (Đúng)",
+                        "D. or go (Đúng)"
+                    ],
+                    whyCorrect: "Ý câu là dừng HẲN việc xem TV lại -> Cần dùng `stop + V-ing`. Sửa `to watch` -> `watching`.",
+                    whyIncorrect: "A, C, D hợp lệ."
+                }
+            },
+            {
+                type: "SECTION V - ERROR CORRECTION",
+                question: "28. Choose the underlined word/phrase that needs correcting:<br><u>Black and white</u>(A) TV sets <u>had been</u>(B) very <u>popular</u>(C) before the digital switch <u>starting</u>(D) some decades ago.",
+                options: [
+                    { text: "Black and white", correct: false },
+                    { text: "had been", correct: false },
+                    { text: "popular", correct: false },
+                    { text: "starting", correct: true }
+                ],
+                explanation: {
+                    translation: "Tivi trắng đen đã từng rất phổ biến trước khi sự chuyển đổi kỹ thuật số bắt đầu cách đây vài thập kỷ.",
+                    optionsDict: [
+                        "A. Black and white (Đúng)",
+                        "B. had been (Đúng)",
+                        "C. popular (Đúng)",
+                        "D. starting -> Sửa thành 'started' (Mệnh đề chỉ thời gian quá khứ sau before/ago)",
+                        
+                    ],
+                    whyCorrect: "Sau liên từ 'before' và có mốc 'ago', động từ trong mệnh đề phải chia Thì Quá khứ đơn. Sửa `starting` -> `started`.",
+                    whyIncorrect: "A, B, C đúng ngữ pháp."
+                }
+            },
+            {
+                type: "SECTION V - ERROR CORRECTION",
+                question: "29. Choose the underlined word/phrase that needs correcting:<br>I <u>was</u>(A) happy to <u>hearing</u>(B) that I could study their <u>customs</u>(C) and <u>traditions</u>(D) from their earlier days.",
+                options: [
+                    { text: "was", correct: false },
+                    { text: "hearing", correct: true },
+                    { text: "customs", correct: false },
+                    { text: "traditions", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi rất vui khi nghe được rằng tôi có thể tìm hiểu về phong tục và truyền thống của họ từ những ngày đầu.",
+                    optionsDict: [
+                        "A. was (Đúng)",
+                        "B. hearing -> Sửa thành 'hear' (cấu trúc adj + to-V)",
+                        "C. customs (Đúng)",
+                        "D. traditions (Đúng)"
+                    ],
+                    whyCorrect: "Cấu trúc tính từ cảm xúc: `S + be + adj + to-V`. Do đó B sai, sửa `hearing` -> `hear` (`happy to hear`).",
+                    whyIncorrect: "A, C, D chia chuẩn."
+                }
+            },
+            {
+                type: "SECTION V - ERROR CORRECTION",
+                question: "30. Choose the underlined word/phrase that needs correcting:<br>My parents <u>both</u>(A) worked <u>really hardly</u>(B) when they <u>were</u>(C) young <u>so that</u>(D) we could have our current house.",
+                options: [
+                    { text: "both", correct: false },
+                    { text: "really hardly", correct: true },
+                    { text: "were", correct: false },
+                    { text: "so that", correct: false }
+                ],
+                explanation: {
+                    translation: "Bố mẹ tôi đều làm việc rất chăm chỉ khi họ còn trẻ để chúng tôi có thể có ngôi nhà như hiện tại.",
+                    optionsDict: [
+                        "A. both (Đúng)",
+                        "B. really hardly -> Sửa thành 'really hard' (work hard = làm việc chăm chỉ; hardly = hầu như không)",
+                        "C. were (Đúng)",
+                        "D. so that (Đúng)"
+                    ],
+                    whyCorrect: "'hardly' có nghĩa là 'hầu như không' (sai nghĩa). Trạng từ của 'hard' vẫn là 'hard' (chăm chỉ). Sửa `really hardly` -> `really hard`.",
+                    whyIncorrect: "A, C, D sử dụng đúng."
+                }
+            },
+            {
+                type: "SECTION V - ERROR CORRECTION",
+                question: "31. Choose the underlined word/phrase that needs correcting:<br>She had promised <u>to not talking</u>(A), and <u>nothing</u>(B) we <u>could do would get</u>(C) the information <u>out of her</u>(D).",
+                options: [
+                    { text: "to not talking", correct: true },
+                    { text: "nothing", correct: false },
+                    { text: "could do would get", correct: false },
+                    { text: "out of her", correct: false }
+                ],
+                explanation: {
+                    translation: "Cô ấy đã hứa là sẽ không nói, và không gì chúng tôi làm có thể lấy được thông tin từ cô ấy.",
+                    optionsDict: [
+                        "A. to not talking -> Sửa thành 'not to talk' (promise not to V)",
+                        "B. nothing (Đúng)",
+                        "C. could do would get (Đúng)",
+                        "D. out of her (Đúng)"
+                    ],
+                    whyCorrect: "Dạng phủ định của promise + to-V là `promise + not to-V`. Sửa `to not talking` -> `not to talk`.",
+                    whyIncorrect: "B, C, D hợp lệ."
+                }
+            },
+            {
+                type: "SECTION V - ERROR CORRECTION",
+                question: "32. Choose the underlined word/phrase that needs correcting:<br>I pretended <u>reading</u>(A) the note a moment <u>longer</u>(B), <u>giving</u>(C) myself a chance <u>to come up with</u>(D) something.",
+                options: [
+                    { text: "reading", correct: true },
+                    { text: "longer", correct: false },
+                    { text: "giving", correct: false },
+                    { text: "to come up with", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi giả vờ đọc lá thư thêm một lúc nữa, tự tạo cho mình cơ hội để nghĩ ra điều gì đó.",
+                    optionsDict: [
+                        "A. reading -> Sửa thành 'to read' (pretend + to-V)",
+                        "B. longer (Đúng)",
+                        "C. giving (Đúng - mệnh đề quan hệ rút gọn)",
+                        "D. to come up with (Đúng)"
+                    ],
+                    whyCorrect: "Cấu trúc: `pretend + to-V` (giả vờ làm gì). Do đó A sai, sửa `reading` -> `to read`.",
+                    whyIncorrect: "B, C, D đúng ngữ pháp."
+                }
+            },
+            {
+                type: "SECTION V - ERROR CORRECTION",
+                question: "33. Choose the underlined word/phrase that needs correcting:<br>They agreed <u>to work</u>(A) without <u>payment</u>(B) until things <u>were settled</u>(C) and the necessary information <u>was provided</u>(D).",
+                options: [
+                    { text: "to work", correct: false },
+                    { text: "payment", correct: false },
+                    { text: "were settled", correct: true },
+                    { text: "was provided", correct: false }
+                ],
+                explanation: {
+                    translation: "Họ đã đồng ý làm việc không thù lao cho đến khi mọi việc được giải quyết ổn thỏa và thông tin cần thiết được cung cấp.",
+                    optionsDict: [
+                        "A. to work (Đúng)",
+                        "B. payment (Đúng)",
+                        "C. were settled -> Sửa thành 'had been settled' (Hành động giải quyết hoàn tất trước trong quá khứ)",
+                        "D. was provided (Đúng)"
+                    ],
+                    whyCorrect: "Hành động giải quyết xong (settled) diễn ra và hoàn thành trước hành động trong quá khứ nên chia Thì Quá khứ hoàn thành bị động `had been settled`.",
+                    whyIncorrect: "A, B, D sử dụng đúng."
+                }
+            },
+
+            // VI. Word Formation
+            {
+                type: "SECTION VI - WORD FORMATION",
+                question: "34. Our country became totally ________ in 1975 after decades of fighting for freedom. (DEPEND)",
+                options: [
+                    { text: "independent", correct: true },
+                    { text: "dependence", correct: false },
+                    { text: "dependent", correct: false },
+                    { text: "independently", correct: false }
+                ],
+                explanation: {
+                    translation: "Đất nước chúng ta hoàn toàn độc lập vào năm 1975 sau nhiều thập kỷ chiến đấu vì tự do.",
+                    optionsDict: [
+                        "A. independent (adj: độc lập)",
+                        "B. dependence (n: sự phụ thuộc)",
+                        "C. dependent (adj: phụ thuộc)",
+                        "D. independently (adv)"
+                    ],
+                    whyCorrect: "Đứng sau động từ nối 'became' và trạng từ 'totally' cần một Tính từ mang nghĩa tự do: `independent` (độc lập).",
+                    whyIncorrect: "B, D sai từ loại; C ngược nghĩa (phụ thuộc)."
+                }
+            },
+            {
+                type: "SECTION VI - WORD FORMATION",
+                question: "35. We have lived in an ________ family for over twenty years. (EXTENSION)",
+                options: [
+                    { text: "extended", correct: true },
+                    { text: "extending", correct: false },
+                    { text: "extension", correct: false },
+                    { text: "extensively", correct: false }
+                ],
+                explanation: {
+                    translation: "Chúng tôi đã sống trong một gia đình đại gia đình (nhiều thế hệ) hơn 20 năm.",
+                    optionsDict: [
+                        "A. extended (adj: extended family = gia đình nhiều thế hệ)",
+                        "B. extending",
+                        "C. extension (n)",
+                        "D. extensively (adv)"
+                    ],
+                    whyCorrect: "Thuật ngữ cố định: `extended family` (gia đình đại gia đình gồm ông bà, cha mẹ, con cái...).",
+                    whyIncorrect: "B, C, D không tạo thành cụm danh từ chỉ mô hình gia đình."
+                }
+            },
+            {
+                type: "SECTION VI - WORD FORMATION",
+                question: "36. The number of private cars on the roads has increased ________ since 2010. (DRAMATIC)",
+                options: [
+                    { text: "dramatically", correct: true },
+                    { text: "dramatic", correct: false },
+                    { text: "dramatize", correct: false },
+                    { text: "dramatist", correct: false }
+                ],
+                explanation: {
+                    translation: "Số lượng ô tô cá nhân trên đường đã tăng lên một cách đáng kể kể từ năm 2010.",
+                    optionsDict: [
+                        "A. dramatically (adv: một cách đáng kể/đột ngột)",
+                        "B. dramatic (adj)",
+                        "C. dramatize (v)",
+                        "D. dramatist (n)"
+                    ],
+                    whyCorrect: "Đứng sau động từ 'has increased' cần một Trạng từ `dramatically` bổ nghĩa cho sự tăng trưởng.",
+                    whyIncorrect: "B, C, D sai từ loại."
+                }
+            },
+            {
+                type: "SECTION VI - WORD FORMATION",
+                question: "37. All of us were ________ to hear that he had passed the driving test on the fourth attempt. (RELIEF)",
+                options: [
+                    { text: "relieved", correct: true },
+                    { text: "relieving", correct: false },
+                    { text: "relief", correct: false },
+                    { text: "relieve", correct: false }
+                ],
+                explanation: {
+                    translation: "Tất cả chúng tôi đều nhẹ nhõm khi nghe tin anh ấy đã đỗ kỳ thi lái xe ở lần thi thứ tư.",
+                    optionsDict: [
+                        "A. relieved (adj: cảm thấy nhẹ nhõm - chỉ cảm xúc người)",
+                        "B. relieving",
+                        "C. relief (n: sự nhẹ nhõm)",
+                        "D. relieve (v)"
+                    ],
+                    whyCorrect: "Chỉ cảm xúc của con người ('All of us') đứng sau to be 'were' cần Tính từ đuôi -ed: `relieved`.",
+                    whyIncorrect: "B, C, D sai dạng từ loại tính từ chỉ cảm xúc."
+                }
+            },
+            {
+                type: "SECTION VI - WORD FORMATION",
+                question: "38. In my opinion, a good doctor is always ________ to his patients. (SYMPATHY)",
+                options: [
+                    { text: "sympathetic", correct: true },
+                    { text: "sympathize", correct: false },
+                    { text: "sympathetically", correct: false },
+                    { text: "sympathy", correct: false }
+                ],
+                explanation: {
+                    translation: "Theo tôi, một bác sĩ giỏi thì luôn đồng cảm và thấu hiểu bệnh nhân của mình.",
+                    optionsDict: [
+                        "A. sympathetic (adj: đồng cảm - đi với to)",
+                        "B. sympathize (v)",
+                        "C. sympathetically (adv)",
+                        "D. sympathy (n)"
+                    ],
+                    whyCorrect: "Cấu trúc: `be + sympathetic to sb` (đồng cảm, thấu hiểu ai). Do đó chọn tính từ 'sympathetic'.",
+                    whyIncorrect: "B, C, D sai từ loại."
+                }
+            },
+            {
+                type: "SECTION VI - WORD FORMATION",
+                question: "39. We are proud that our country has become one of the world’s largest rice ________. (EXPORT)",
+                options: [
+                    { text: "exporters", correct: true },
+                    { text: "exportation", correct: false },
+                    { text: "exporting", correct: false },
+                    { text: "exports", correct: false }
+                ],
+                explanation: {
+                    translation: "Chúng tôi tự hào rằng đất nước mình đã trở thành một trong những nước xuất khẩu gạo lớn nhất thế giới.",
+                    optionsDict: [
+                        "A. exporters (n số nhiều: quốc gia/nhà xuất khẩu)",
+                        "B. exportation (n: sự xuất khẩu)",
+                        "C. exporting",
+                        "D. exports"
+                    ],
+                    whyCorrect: "Cấu trúc 'one of the world's largest rice + N(số nhiều chỉ đối tượng)': `rice exporters` (các quốc gia xuất khẩu gạo).",
+                    whyIncorrect: "B là danh từ sự việc; D chỉ hàng hóa xuất khẩu."
+                }
+            },
+            {
+                type: "SECTION VI - WORD FORMATION",
+                question: "40. These are the most ________ shoes I have ever worn. I like them very much. (COMFORT)",
+                options: [
+                    { text: "comfortable", correct: true },
+                    { text: "comfortably", correct: false },
+                    { text: "uncomfortable", correct: false },
+                    { text: "comforted", correct: false }
+                ],
+                explanation: {
+                    translation: "Đây là đôi giày thoải mái nhất mà tôi từng đi. Tôi thích chúng lắm.",
+                    optionsDict: [
+                        "A. comfortable (adj: thoải mái)",
+                        "B. comfortably (adv)",
+                        "C. uncomfortable (adj: không thoải mái)",
+                        "D. comforted"
+                    ],
+                    whyCorrect: "Đứng sau 'the most' và trước danh từ 'shoes' cần Tính từ mang nghĩa tích cực: `comfortable`.",
+                    whyIncorrect: "B sai từ loại; C mang nghĩa phủ định (khó chịu) mâu thuẫn câu sau."
+                }
+            },
+            {
+                type: "SECTION VI - WORD FORMATION",
+                question: "41. There has been a ________ increase in high-rise buildings over the last five years. (CONSIDER)",
+                options: [
+                    { text: "considerable", correct: true },
+                    { text: "considerably", correct: false },
+                    { text: "consideration", correct: false },
+                    { text: "considerate", correct: false }
+                ],
+                explanation: {
+                    translation: "Đã có một sự gia tăng đáng kể các tòa nhà cao tầng trong 5 năm qua.",
+                    optionsDict: [
+                        "A. considerable (adj: đáng kể)",
+                        "B. considerably (adv)",
+                        "C. consideration (n)",
+                        "D. considerate (adj: chu đáo)"
+                    ],
+                    whyCorrect: "Đứng trước danh từ 'increase' cần một Tính từ bổ nghĩa: `considerable` (đáng kể).",
+                    whyIncorrect: "B là trạng từ; C là danh từ; D mang nghĩa 'chu đáo, ân cần' không dùng cho con số/sự gia tăng."
+                }
+            },
+            {
+                type: "SECTION VI - WORD FORMATION",
+                question: "42. We really like the photo ________ in the school’s 70th anniversary. (EXHIBIT)",
+                options: [
+                    { text: "exhibition", correct: true },
+                    { text: "exhibitor", correct: false },
+                    { text: "exhibited", correct: false },
+                    { text: "exhibiting", correct: false }
+                ],
+                explanation: {
+                    translation: "Chúng tôi thực sự thích triển lãm ảnh trong lễ kỷ niệm 70 năm thành lập trường.",
+                    optionsDict: [
+                        "A. exhibition (n: cuộc triển lãm - photo exhibition)",
+                        "B. exhibitor (n: người triển lãm)",
+                        "C. exhibited",
+                        "D. exhibiting"
+                    ],
+                    whyCorrect: "Cụm danh từ ghép: `photo exhibition` (triển lãm ảnh).",
+                    whyIncorrect: "B chỉ người; C, D không tạo thành tên gọi sự kiện triển lãm."
+                }
+            },
+            {
+                type: "SECTION VI - WORD FORMATION",
+                question: "43. Nowadays, it is easy to get to the ________ areas by tram. (SUBURB)",
+                options: [
+                    { text: "suburban", correct: true },
+                    { text: "suburbs", correct: false },
+                    { text: "suburbia", correct: false },
+                    { text: "suburb", correct: false }
+                ],
+                explanation: {
+                    translation: "Ngày nay, thật dễ dàng để đi đến các khu vực ngoại ô bằng xe điện.",
+                    optionsDict: [
+                        "A. suburban (adj: thuộc ngoại ô)",
+                        "B. suburbs (n số nhiều)",
+                        "C. suburbia (n)",
+                        "D. suburb (n)"
+                    ],
+                    whyCorrect: "Đứng trước danh từ 'areas' cần Tính từ `suburban` (suburban areas = các khu vực ngoại thành/ngoại ô).",
+                    whyIncorrect: "B, C, D đều là các dạng danh từ."
+                }
+            },
+
+            // VII. Complete with Verb + to-infinitive / V-ing
+            {
+                type: "SECTION VII - VERB PATTERNS (REGRET)",
+                question: "44. I regret ________ you that your passport has expired. You must renew it so that you can travel.",
+                options: [
+                    { text: "to inform", correct: true },
+                    { text: "informing", correct: false },
+                    { text: "to write", correct: false },
+                    { text: "writing", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi lấy làm tiếc khi phải thông báo với bạn rằng hộ chiếu của bạn đã hết hạn.",
+                    optionsDict: [
+                        "A. to inform (Tiếc phải làm gì - chưa làm)",
+                        "B. informing (Hối hận đã làm gì)",
+                        "C. to write",
+                        "D. writing"
+                    ],
+                    whyCorrect: "Cấu trúc: `regret + to-V` (lấy làm tiếc khi phải báo tin xấu/làm gì). Đi với động từ 'inform' (thông báo).",
+                    whyIncorrect: "B mang nghĩa hối hận về việc đã làm trong quá khứ."
+                }
+            },
+            {
+                type: "SECTION VII - VERB PATTERNS (ENJOY)",
+                question: "45. My aunt always enjoys ________ whenever she feels bored. Last Christmas she gave me a beautiful sweater.",
+                options: [
+                    { text: "knitting", correct: true },
+                    { text: "to knit", correct: false },
+                    { text: "sleeping", correct: false },
+                    { text: "to sleep", correct: false }
+                ],
+                explanation: {
+                    translation: "Dì của tôi luôn thích đan đan móc mỗi khi cảm thấy chán. Giáng sinh năm ngoái dì đã tặng tôi một chiếc áo len rất đẹp.",
+                    optionsDict: [
+                        "A. knitting (đan len - V-ing)",
+                        "B. to knit",
+                        "C. sleeping",
+                        "D. to sleep"
+                    ],
+                    whyCorrect: "Cấu trúc: `enjoy + V-ing`. Động từ 'knit' (đan) liên quan đến chi tiết tặng áo len ('sweater').",
+                    whyIncorrect: "B sai dạng nguyên mẫu; C, D không khớp với ngữ cảnh đan áo len."
+                }
+            },
+            {
+                type: "SECTION VII - VERB PATTERNS (DENY)",
+                question: "46. In spite of being arrested, she still denied ________ things in the supermarket.",
+                options: [
+                    { text: "stealing", correct: true },
+                    { text: "to steal", correct: false },
+                    { text: "moving", correct: false },
+                    { text: "to move", correct: false }
+                ],
+                explanation: {
+                    translation: "Mặc dù bị bắt giữ, cô ấy vẫn phủ nhận việc ăn trộm đồ trong siêu thị.",
+                    optionsDict: [
+                        "A. stealing (ăn trộm - V-ing)",
+                        "B. to steal",
+                        "C. moving",
+                        "D. to move"
+                    ],
+                    whyCorrect: "Cấu trúc: `deny + V-ing` (phủ định/phủ nhận đã làm gì). Động từ 'steal' (trộm đồ) phù hợp ngữ cảnh bị bắt.",
+                    whyIncorrect: "B sai dạng to-V; C, D không hợp nghĩa bị bắt ở siêu thị."
+                }
+            },
+            {
+                type: "SECTION VII - VERB PATTERNS (PRETEND)",
+                question: "47. The old woman just pretended ________, so she knew what they were doing in her garden at that time.",
+                options: [
+                    { text: "to sleep", correct: true },
+                    { text: "sleeping", correct: false },
+                    { text: "to visit", correct: false },
+                    { text: "visiting", correct: false }
+                ],
+                explanation: {
+                    translation: "Người phụ nữ lớn tuổi chỉ giả vờ ngủ, vì vậy bà biết họ đang làm gì trong vườn nhà mình lúc đó.",
+                    optionsDict: [
+                        "A. to sleep (giả vờ ngủ - to-V)",
+                        "B. sleeping",
+                        "C. to visit",
+                        "D. visiting"
+                    ],
+                    whyCorrect: "Cấu trúc: `pretend + to-V` (giả vờ làm gì). Động từ 'sleep' (ngủ) hợp ngữ cảnh vờ ngủ để quan sát.",
+                    whyIncorrect: "B sai dạng V-ing; C, D không hợp ngữ cảnh."
+                }
+            },
+            {
+                type: "SECTION VII - VERB PATTERNS (STOP)",
+                question: "48. All the students stopped ________ when the principal suddenly appeared in front of their classroom.",
+                options: [
+                    { text: "talking", correct: true },
+                    { text: "to talk", correct: false },
+                    { text: "working", correct: false },
+                    { text: "to work", correct: false }
+                ],
+                explanation: {
+                    translation: "Tất cả học sinh lập tức dừng nói chuyện khi thầy hiệu trưởng đột ngột xuất hiện trước cửa lớp.",
+                    optionsDict: [
+                        "A. talking (dừng hẳn việc nói chuyện)",
+                        "B. to talk (dừng lại để nói)",
+                        "C. working",
+                        "D. to work"
+                    ],
+                    whyCorrect: "Cấu trúc: `stop + V-ing` (dừng hẳn việc đang làm). Học sinh dừng việc nói chuyện ('talking') khi thấy hiệu trưởng.",
+                    whyIncorrect: "B mang nghĩa 'dừng lại ĐỂ nói chuyện' (ngược ý); C, D không tả cảnh lớp học đang nói chuyện ồn ào."
+                }
+            },
+            {
+                type: "SECTION VII - VERB PATTERNS (CONTINUE)",
+                question: "49. Gasoline prices continue ________ though the demand is still low.",
+                options: [
+                    { text: "to rise", correct: true },
+                    { text: "rises", correct: false },
+                    { text: "rose", correct: false },
+                    { text: "risen", correct: false }
+                ],
+                explanation: {
+                    translation: "Giá xăng tiếp tục tăng mặc dù nhu cầu vẫn còn thấp.",
+                    optionsDict: [
+                        "A. to rise (hoặc rising)",
+                        "B. rises",
+                        "C. rose",
+                        "D. risen"
+                    ],
+                    whyCorrect: "Cấu trúc: `continue + to-V / V-ing` (tiếp tục làm gì). 'rise' có nghĩa là tăng lên.",
+                    whyIncorrect: "B, C, D không phải dạng động từ đi sau 'continue'."
+                }
+            },
+            {
+                type: "SECTION VII - VERB PATTERNS (PRACTICE)",
+                question: "50. If you want to master Chinese characters, you have to practice ________ every day.",
+                options: [
+                    { text: "writing", correct: true },
+                    { text: "to write", correct: false },
+                    { text: "reading", correct: false },
+                    { text: "to read", correct: false }
+                ],
+                explanation: {
+                    translation: "Nếu bạn muốn thành thạo chữ Hán, bạn phải luyện viết mỗi ngày.",
+                    optionsDict: [
+                        "A. writing (luyện viết - V-ing)",
+                        "B. to write",
+                        "C. reading",
+                        "D. to read"
+                    ],
+                    whyCorrect: "Cấu trúc: `practice + V-ing` (luyện tập làm gì). Viết chữ Hán là 'writing Chinese characters'.",
+                    whyIncorrect: "B sai dạng to-V sau practice."
+                }
+            },
+            {
+                type: "SECTION VII - VERB PATTERNS (MIND)",
+                question: "51. Just give me some tasks. I don’t mind ________ during the holiday.",
+                options: [
+                    { text: "working", correct: true },
+                    { text: "to work", correct: false },
+                    { text: "sleeping", correct: false },
+                    { text: "to sleep", correct: false }
+                ],
+                explanation: {
+                    translation: "Cứ giao cho tôi vài nhiệm vụ. Tôi không phiền làm việc trong kỳ nghỉ đâu.",
+                    optionsDict: [
+                        "A. working (làm việc - V-ing)",
+                        "B. to work",
+                        "C. sleeping",
+                        "D. to sleep"
+                    ],
+                    whyCorrect: "Cấu trúc: `don't mind + V-ing` (không phiền làm gì). Động từ 'work' khớp với việc nhận nhiệm vụ ('tasks').",
+                    whyIncorrect: "B sai dạng to-V."
+                }
+            },
+            {
+                type: "SECTION VII - VERB PATTERNS (ARRANGE)",
+                question: "52. The government has arranged ________ a team of 50 firefighters to the mountains to help put out the wildfire.",
+                options: [
+                    { text: "to send", correct: true },
+                    { text: "sending", correct: false },
+                    { text: "to move", correct: false },
+                    { text: "moving", correct: false }
+                ],
+                explanation: {
+                    translation: "Chính phủ đã sắp xếp cử một đội gồm 50 lính chữa cháy lên vùng núi để giúp dập tắt đám cháy rừng.",
+                    optionsDict: [
+                        "A. to send (cử/gửi đi - to-V)",
+                        "B. sending",
+                        "C. to move",
+                        "D. moving"
+                    ],
+                    whyCorrect: "Cấu trúc: `arrange + to-V` (sắp xếp làm gì). Cụm 'send a team' = cử một đội đi.",
+                    whyIncorrect: "B sai dạng V-ing đi sau arrange."
+                }
+            },
+            {
+                type: "SECTION VII - VERB PATTERNS (MENTION)",
+                question: "53. Recently, Mark has mentioned ________ to big cities to look for a job.",
+                options: [
+                    { text: "moving", correct: true },
+                    { text: "to move", correct: false },
+                    { text: "visiting", correct: false },
+                    { text: "to visit", correct: false }
+                ],
+                explanation: {
+                    translation: "Gần đây, Mark đã đề cập đến việc chuyển đến các thành phố lớn để tìm việc làm.",
+                    optionsDict: [
+                        "A. moving (chuyển đi - V-ing)",
+                        "B. to move",
+                        "C. visiting",
+                        "D. to visit"
+                    ],
+                    whyCorrect: "Cấu trúc: `mention + V-ing` (đề cập đến việc làm gì). 'move to big cities' = chuyển tới thành phố lớn.",
+                    whyIncorrect: "B sai dạng to-V."
+                }
+            },
+            {
+                type: "SECTION VII - VERB PATTERNS (POSTPONE)",
+                question: "54. Due to the severe storm, they had to postpone ________ the festival.",
+                options: [
+                    { text: "celebrating", correct: true },
+                    { text: "to celebrate", correct: false },
+                    { text: "inform", correct: false },
+                    { text: "to inform", correct: false }
+                ],
+                explanation: {
+                    translation: "Do cơn bão dữ dội, họ đã phải hoãn việc tổ chức lễ hội.",
+                    optionsDict: [
+                        "A. celebrating (tổ chức lễ hội - V-ing)",
+                        "B. to celebrate",
+                        "C. inform",
+                        "D. to inform"
+                    ],
+                    whyCorrect: "Cấu trúc: `postpone + V-ing` (hoãn làm việc gì). 'celebrate the festival' = tổ chức lễ hội.",
+                    whyIncorrect: "B sai dạng to-V đi sau postpone."
+                }
+            },
+            {
+                type: "SECTION VII - VERB PATTERNS (PROMISE)",
+                question: "55. After saying goodbye, Natasha promised ________ us one day.",
+                options: [
+                    { text: "to visit", correct: true },
+                    { text: "visiting", correct: false },
+                    { text: "to inform", correct: false },
+                    { text: "informing", correct: false }
+                ],
+                explanation: {
+                    translation: "Sau khi nói lời tạm biệt, Natasha đã hứa một ngày nào đó sẽ tới thăm chúng tôi.",
+                    optionsDict: [
+                        "A. to visit (thăm - to-V)",
+                        "B. visiting",
+                        "C. to inform",
+                        "D. informing"
+                    ],
+                    whyCorrect: "Cấu trúc: `promise + to-V` (hứa làm gì). 'visit us' = đến thăm chúng tôi.",
+                    whyIncorrect: "B sai dạng V-ing sau promise."
+                }
+            }
+        ];
+
+        let questions = [];
+
+        function shuffleArray(array) {
+            let cur = array.slice();
+            for (let i = cur.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [cur[i], cur[j]] = [cur[j], cur[i]];
+            }
+            return cur;
+        }
+
+        function initQuiz() {
+            questions = rawQuestions.map(q => {
+                let shuffledOpts = shuffleArray(q.options);
+                return {
+                    ...q,
+                    shuffledOptions: shuffledOpts,
+                    userAnswerIndex: null
+                };
+            });
+            renderQuiz();
+        }
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+
+            questions.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+
+                const optionsHTML = q.shuffledOptions.map((opt, optIdx) => {
+                    const letters = ['A', 'B', 'C', 'D'];
+                    return `
+                        <button class="opt-btn" id="opt-${idx}-${optIdx}" onclick="selectAnswer(${idx}, ${optIdx})">
+                            <span class="opt-prefix">${letters[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>
+                    `;
+                }).join('');
+
+                const exp = q.explanation;
+                const expDictHTML = exp.optionsDict.map(item => `<li>${item}</li>`).join('');
+
+                card.innerHTML = `
+                    <div class="q-header">
+                        <span class="q-number">Câu ${idx + 1} / ${questions.length}</span>
+                        <span class="q-type">${q.type}</span>
+                    </div>
+                    <div class="q-text">${q.question}</div>
+                    <div class="options-grid">
+                        ${optionsHTML}
+                    </div>
+                    <div class="explanation-box" id="exp-${idx}">
+                        <div class="exp-head">💡 GIẢI THÍCH CHI TIẾT TỪ MS LÊ HẰNG:</div>
+                        <div class="exp-section"><strong>1. Dịch câu hỏi:</strong> ${exp.translation}</div>
+                        <div class="exp-section">
+                            <strong>2. Phân tích 4 đáp án:</strong>
+                            <ul class="exp-list">${expDictHTML}</ul>
+                        </div>
+                        <div class="exp-section"><strong>3. Tại sao chọn đáp án này?</strong> ${exp.whyCorrect}</div>
+                        <div class="exp-section"><strong>4. Tại sao các đáp án khác sai?</strong> ${exp.whyIncorrect}</div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function selectAnswer(qIdx, optIdx) {
+            const q = questions[qIdx];
+            if (q.userAnswerIndex !== null) return;
+
+            q.userAnswerIndex = optIdx;
+            const selectedOpt = q.shuffledOptions[optIdx];
+            const isCorrect = selectedOpt.correct;
+
+            const selectedBtn = document.getElementById(`opt-${qIdx}-${optIdx}`);
+
+            if (isCorrect) {
+                selectedBtn.classList.add('correct');
+                playSound('correct');
+                triggerConfetti();
+            } else {
+                selectedBtn.classList.add('wrong');
+                playSound('wrong');
+
+                q.shuffledOptions.forEach((o, i) => {
+                    if (o.correct) {
+                        document.getElementById(`opt-${qIdx}-${i}`).classList.add('correct');
+                    }
+                });
+            }
+
+            q.shuffledOptions.forEach((_, i) => {
+                const b = document.getElementById(`opt-${qIdx}-${i}`);
+                b.disabled = true;
+                b.style.cursor = 'default';
+            });
+
+            document.getElementById(`exp-${qIdx}`).classList.add('show');
+        }
+
+        function submitQuiz() {
+            let correctCount = 0;
+
+            questions.forEach(q => {
+                if (q.userAnswerIndex !== null && q.shuffledOptions[q.userAnswerIndex].correct) {
+                    correctCount++;
+                }
+            });
+
+            const total = questions.length;
+            const percentage = Math.round((correctCount / total) * 100);
+
+            document.getElementById('score-text').innerText = `${correctCount} / ${total} (${percentage}%)`;
+
+            let comment = "";
+            if (percentage < 50) {
+                comment = "Điểm lần này chưa cao lắm, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!";
+            } else if (percentage <= 80) {
+                comment = "Con đã có tiến bộ khá ổn rồi, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!";
+            } else {
+                comment = "Làm tốt lắm, con cố gắng rinh điểm 10 ở lần sau nha!";
+                triggerConfetti();
+            }
+
+            document.getElementById('comment-text').innerText = comment;
+            document.getElementById('result-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('result-modal').style.display = 'none';
+        }
+
+        function triggerConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particles = [];
+            const colors = ['#8854C0', '#FDCB6E', '#00C9A7', '#FF7675', '#6C5CE7', '#00D26A'];
+
+            for (let i = 0; i < 60; i++) {
+                particles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    vx: (Math.random() - 0.5) * 14,
+                    vy: (Math.random() - 0.7) * 14,
+                    size: Math.random() * 8 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    life: 90
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let alive = false;
+
+                particles.forEach(p => {
+                    if (p.life > 0) {
+                        alive = true;
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        p.vy += 0.4;
+                        p.life -= 2;
+                        ctx.fillStyle = p.color;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                });
+
+                if (alive) requestAnimationFrame(animate);
+                else ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+
+            animate();
+        }
+
+        window.onload = initQuiz;
+    </script>
+</body>
+</html>
